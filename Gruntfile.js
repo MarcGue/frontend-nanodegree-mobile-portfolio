@@ -5,6 +5,9 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        clean: {
+            build: ['dist']
+        },
         imagemin: {
             dynamic: {
                 files: [{
@@ -35,9 +38,20 @@ module.exports = function (grunt) {
                     dest: 'dist/js'
                 }]
             }
+        },
+        htmlmin: { // Task
+            dist: { // Target
+                options: { // Target options
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: { // Dictionary of files
+                    'dist/index.html': 'index.html', // 'destination': 'source'
+                }
+            }
         }
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['imagemin', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin']);
 };
