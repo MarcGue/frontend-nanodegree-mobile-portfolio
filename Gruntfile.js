@@ -15,6 +15,11 @@ module.exports = function (grunt) {
                     cwd: 'img', // Src matches are relative to this path
                     src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
                     dest: 'dist/img/' // Destination path prefix
+                }, {
+                    expand: true,
+                    cwd: 'views/images',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'dist/views/images'
                 }]
             }
         },
@@ -25,6 +30,11 @@ module.exports = function (grunt) {
                     cwd: 'css',
                     src: ['*.css'],
                     dest: 'dist/css'
+                }, {
+                    expand: true,
+                    cwd: 'views/css',
+                    src: ['*.css'],
+                    dest: 'dist/views/css'
                 }]
             }
         },
@@ -35,6 +45,11 @@ module.exports = function (grunt) {
                     cwd: 'js',
                     src: '**/*.js',
                     dest: 'dist/js'
+                }, {
+                    expand: true,
+                    cwd: 'views/js',
+                    src: '**/*.js',
+                    dest: 'dist/views/js'  
                 }]
             }
         },
@@ -46,11 +61,26 @@ module.exports = function (grunt) {
                 },
                 files: { // Dictionary of files
                     'dist/index.html': 'index.html', // 'destination': 'source'
+                    'dist/project-2048.html': 'project-2048.html',
+                    'dist/project-mobile.html': 'project-mobile.html',
+                    'dist/project-webperf.html': 'project-webperf.html',
+                    'dist/views/pizza.html': 'views/pizza.html'
                 }
+            }
+        },
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: 'dist/',
+                    src: ['**'],
+                    dest: 'doc/'
+                }]
             }
         }
     });
 
     // Default task(s).
     grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin']);
+    grunt.registerTask('doc', ['clean', 'copy']);
 };
