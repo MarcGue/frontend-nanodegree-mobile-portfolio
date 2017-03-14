@@ -29,13 +29,18 @@ module.exports = function (grunt) {
         responsive_images: {
             myTask: {
                 options: {
-                    engine: 'im'
+                    engine: 'im',
+                    sizes: [{
+                        name: 'optimized',
+                        width: 1024,
+                        height: 768
+                    }]
                 },
                 files: [{
                     expand: true,
-                    cwd: 'img',
-                    src: ['**.{png,jpg,gif}'],
-                    dest: 'dist/img'
+                    cwd: 'dist/views/images',
+                    src: ['pizzeria.jpg'],
+                    dest: 'dist/views/images'
                 }]
             }
         },
@@ -97,6 +102,6 @@ module.exports = function (grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin']);
-    grunt.registerTask('doc', ['clean', 'copy']);
+    grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'responsive_images']);
+    grunt.registerTask('doc', ['copy']);
 };
