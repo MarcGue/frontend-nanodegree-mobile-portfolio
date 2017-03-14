@@ -26,6 +26,19 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        responsive_images: {
+            myTask: {
+                options: {
+                    engine: 'im'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'img',
+                    src: ['**.{png,jpg,gif}'],
+                    dest: 'dist/img'
+                }]
+            }
+        },
         cssmin: {
             target: {
                 files: [{
