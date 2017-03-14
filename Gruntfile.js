@@ -10,6 +10,9 @@ module.exports = function (grunt) {
         },
         imagemin: {
             dynamic: {
+                options: { // Target options
+                    optimizationLevel: 5
+                },
                 files: [{
                     expand: true, // Enable dynamic expansion
                     cwd: 'img', // Src matches are relative to this path
@@ -49,7 +52,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: 'views/js',
                     src: '**/*.js',
-                    dest: 'dist/views/js'  
+                    dest: 'dist/views/js'
                 }]
             }
         },
