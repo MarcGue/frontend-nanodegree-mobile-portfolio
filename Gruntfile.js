@@ -6,12 +6,16 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            build: ['dist']
+            build: ['dist'],
+            images: ['dist/views/images/pizzeria.jpg']
         },
         imagemin: {
             dynamic: {
                 options: { // Target options
-                    optimizationLevel: 5
+                    optimizationLevel: 7,
+                    svgoPlugins: [{
+                        removeViewBox: true
+                    }]
                 },
                 files: [{
                     expand: true, // Enable dynamic expansion
@@ -102,6 +106,6 @@ module.exports = function (grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'responsive_images']);
+    grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'responsive_images', 'clean:images']);
     grunt.registerTask('doc', ['copy']);
 };
