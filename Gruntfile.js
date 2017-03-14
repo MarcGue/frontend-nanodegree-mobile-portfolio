@@ -36,13 +36,13 @@ module.exports = function (grunt) {
                     engine: 'im',
                     sizes: [{
                         name: 'optimized-small',
-                        width: 320,
-                        height: 240,
+                        width: 115,
+                        height: 75,
                         quality: 80
                     }, {
                         name: 'optimized-large',
-                        width: 1024,
-                        height: 768,
+                        width: 720,
+                        height: 540,
                         quality: 80
                     }]
                 },
