@@ -7,7 +7,8 @@ module.exports = function (grunt) {
 
         clean: {
             build: ['dist'],
-            images: ['dist/views/images/pizzeria.jpg']
+            images: ['dist/views/images/pizzeria.jpg'],
+            docs: ['docs']
         },
         imagemin: {
             dynamic: {
@@ -113,5 +114,5 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['clean', 'imagemin', 'cssmin', 'uglify', 'htmlmin', 'responsive_images', 'clean:images']);
-    grunt.registerTask('doc', ['copy']);
+    grunt.registerTask('doc', ['clean:docs', 'copy']);
 };
