@@ -1,12 +1,13 @@
 ## Website Performance Optimization portfolio project
 
 This project is related to project 4 of the nanodegree Front-End Web Developer of Udacity.
+To see the optimized page in action visit: https://marcgue.github.io/frontend-nanodegree-mobile-portfolio/
 
 ### Getting started
 1. Make sure you installed NPM and Grunt
 2. Download or clone this repository
 3. Execute 'grunt' in your project's root directory
-4. You will get a new dist folder with the generated files for this project
+4. You will get a generated dist folder with the generated files for this project
 
 ### Explanation
 I used grunt to uglify, minify etc. all of my source files. After that i call 'grunt doc' to copy the files to the doc folder 
