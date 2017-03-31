@@ -439,6 +439,7 @@ var resizePizzas = function(size) {
     // Changed document.querySelectorAll() -> document.getElementsByClassName
     var randomPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzaContainers.length; i++) {
+      // Use % instead of pixels
       randomPizzaContainers[i].style.width = newwidth + '%';
     }
   }
@@ -506,6 +507,8 @@ function updatePositions() {
   }
 }
 
+// On scroll to make it more readable what happens when the user scrolls.
+// On scroll calls requestAnimationFrame to make animation smoother
 function onScroll() {
   window.requestAnimationFrame(updatePositions);
 }
@@ -514,6 +517,7 @@ function onScroll() {
 window.addEventListener('scroll', onScroll);
 
 // Generates the sliding pizzas when the page loads.
+// Also put this into a requestAnimationFrame for better performance
 document.addEventListener('DOMContentLoaded', 
   window.requestAnimationFrame(function() {
     var cols = 8;
@@ -529,5 +533,5 @@ document.addEventListener('DOMContentLoaded',
       elem.style.top = (Math.floor(i / cols) * s) + 'px';
       movingPizzas1.appendChild(elem);
     }
-  window.requestAnimationFrame(updatePositions);
+  onScroll();
 }));
