@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -493,7 +493,7 @@ function updatePositions() {
   // Changed document.querySelectorAll() -> document.getElementsByClassName
   var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(scrollTop + 5);
+    var phase = Math.sin(scrollTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -522,8 +522,9 @@ document.addEventListener('DOMContentLoaded',
   window.requestAnimationFrame(function() {
     var cols = 8;
     var s = 256;
-    var movingPizzas1 = document.querySelector("#movingPizzas1");
-    for (var i = 0; i < 200; i++) {
+    var movingPizzas1 = document.getElementById("movingPizzas1");
+    var pizzas = (screen.height / s.height) * col;
+    for (var i = 0; i < pizzas; i++) {
       var elem = document.createElement('img');
       elem.className = 'mover';
       elem.src = "images/pizza.png";
